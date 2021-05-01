@@ -18,11 +18,6 @@ deploy:
   on:
     branch: master
   access_key_id: $elasticbeanstalkkey
-  secret_access_key:
-    secure: "$elasticbeanstaksecret"
-
-
-
-
+  secret_access_key: $elasticbeanstaksecret
 
 language: generic
