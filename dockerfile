@@ -8,5 +8,7 @@ RUN npm run build
 
 #Container production APP
 FROM nginx
+# Expose required to deploy on elastic beanstalk AWS
+EXPOSE 80
 COPY --from=0 /app/build /usr/share/nginx/html
 
