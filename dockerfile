@@ -1,14 +1,14 @@
 #Container Builder App
 FROM node:alpine as builder
 WORKDIR '/app'
-COPY package.json .
+COPY package*.json ./
 RUN npm install
-COPY . .
+COPY ./ ./
 RUN npm run build
 
 #Container production APP
 FROM nginx
-# Expose required to deploy on elastic beanstalk AWS
+# Expose required to deploy on elastic beanstalk 
 EXPOSE 80
 COPY --from=0 /app/build /usr/share/nginx/html
 
