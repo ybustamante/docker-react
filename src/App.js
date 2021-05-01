@@ -20,7 +20,7 @@ function App() {
       </header>
       <div>
         <p>
-         Hi there, How are you!
+         Hi there!
         </p>
       </div>
     </div>
