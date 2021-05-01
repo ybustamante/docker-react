@@ -1,0 +1,12 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t ybustamante/docker-react-test -f dockerfile.dev .
+
+script:
+  - docker run ybustamante/docker-react-test npm run test -- --coverage
+  #- docker run -e CI=true ybustamante/docker-react-test npm run test
+
+language: generic
