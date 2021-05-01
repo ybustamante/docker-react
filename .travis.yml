@@ -6,7 +6,23 @@ before_install:
   - docker build -t ybustamante/docker-react-test -f dockerfile.dev .
 
 script:
-  #- docker run ybustamante/docker-react-test npm run test -- --coverage
   - docker run -e CI=true ybustamante/docker-react-test npm run test
+
+deploy:
+  provider: elasticbenstalk
+  region: "us-east-1"
+  app: "docker-react"
+  env: "Dockerreact-env"
+  bucket_name: "elasticbeanstalk-us-east-1-935504120416"
+  bucket_path: "docker-react"
+  on:
+    branch: master
+  access_key_id: $elasticbeanstalkkey
+  secret_access_key:
+    secure: "$elasticbeanstaksecret"
+
+
+
+
 
 language: generic
